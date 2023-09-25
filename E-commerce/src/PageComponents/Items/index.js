@@ -4,7 +4,6 @@ import ImageBox from './ImageBox';
 import { useState, useEffect } from 'react';
 import arrowLeft from '../../Assets/arrow_left.png'
 import arrowRight from '../../Assets/arrow_right.png'
-import useProductList from '../../Hooks/useProductList';
 import useFakeStoreAPI from '../../Hooks/useFakeStoreAPI';
 import LoadingBox from '../LoadingBox';
 import LoadingCat from '../LoadingCat';
@@ -29,8 +28,6 @@ console.log('categories:', categories)
     const [showData , setShowData] = useState(null);
 
     const [show , setShow] = useState(false);
-
-    const [direction , setDirection] = useState();
 
     const [showRight , setShowRight] = useState(true);
 
@@ -101,7 +98,10 @@ console.log('categories:', categories)
         }
     },[categories, orignalData])
 
-    console.log(direction,'direction');
+    useEffect(()=>{
+        setShowLeft(false);
+        setShowRight(true);
+    },[categories])
 
     return (
         <>
